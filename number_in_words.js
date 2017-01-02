@@ -1,11 +1,10 @@
-var kalimat = ""
-function in_words(angka) {
+function in_words(angka, kalimat="") {
   // Your code here
   angka = angka.toString()
   var panjang = angka.length
   var satuan= ["", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"];
   var belasan = ["sepuluh", "sebelas", "dua belas", "tiga belas", "empat belas", "lima belas", "enam belas", "tujuh belas", "delapan belas", "sembilan belas"];
-  var modifier = ["ribu", "juta", "milliar", "triliun"]
+  var modifier = ["", "ribu", "juta", "milliar", "triliun"]
   var result = [];
   var simpan = []
 //dikelompokkan menjadi 3
@@ -39,25 +38,24 @@ function in_words(angka) {
       simpan[0] -= simpan[0]
     }
 //to be recursived
-    kalimat = kalimat + " " + result.join(" ")
+    kalimat = kalimat + " " + result.join(" ") + " " + modifier[simpan.length-1]
     if (simpan.length < 2){
       return kalimat
     } else {
     simpan.unshift()
     simpan = simpan.join("")
-    console.log(simpan);
     }
-  return in_words(Number(simpan))
+  return in_words(Number(simpan), kalimat)
 }
 // Driver code
-// console.log(in_words(1000000));
-// console.log(in_words(5));
-// console.log(in_words(13));
-// console.log(in_words(27));
-// console.log(in_words(182));
-// console.log(in_words(752));
-// console.log(in_words(612));
+console.log(in_words(1000000));
+console.log(in_words(5));
+console.log(in_words(13));
+console.log(in_words(27));
+console.log(in_words(182));
+console.log(in_words(752));
+console.log(in_words(612));
 console.log(in_words(12345678));
-// console.log(in_words(1000));
-// console.log(in_words(100));
-// console.log(in_words(22213717));
+console.log(in_words(1000));
+console.log(in_words(100));
+console.log(in_words(22213717));
