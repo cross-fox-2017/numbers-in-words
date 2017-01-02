@@ -4,7 +4,7 @@ var j = 0;
 function in_words(angka) {
     var strAngka = String(angka);
     if (strAngka.length > 15) {
-        return "Diluar Batas 'Max 15 Digit'"
+        return "Diluar Batas 'Max 15 Digit'" // Diluar Batas Perhitungan Sistem
     } else if (angka <= 0) {
         kalimat = kalimat.replace("Satu Ribu", "Seribu");
         kalimat = kalimat.replace("Juta Ribu", "Juta");
