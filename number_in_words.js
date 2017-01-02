@@ -51,43 +51,43 @@ function in_words(angka) {
   return result;
 }
 
-// function rec(angka){
-//     var satuan = ['satu','dua','tiga','empat','lima','enam','tujuh','delapan','sembilan'];
-//     var str = angka.toString();
-//     var res = '';
-//     var num = 1;
-//     if(str.length === 1){
-//       if(angka!== 0){
-//         res += satuan[str[0]-1];
-//       }
-//       num = angka;
-//     }
-//     else if(str.length === 2){
-//       res += satuan[str[0]-1] + ' puluh ';
-//       num = parseInt(str[0]) *10;
-//     }
-//     else if(str.length === 3){
-//       res += satuan[str[0]-1] + 'ratus ';
-//       num = parseInt(str[0]) *100;
-//     }else if (str.length === 4) {
-//       res += satuan[str[0]-1] + 'ribu '
-//       num = parseInt(str[0] * 1000)
-//     }
-//     else if (str.length === 5) {
-//       res += satuan[str[0]-1] + ' puluhribu '
-//       num = parseInt(str[0] * 10000)
-//     }
-//
-//     if(angka > 0) {
-//       return (res + rec(angka - num));
-//     }else{
-//       return res;
-//     }
-//
-//
-//
-// }
+function rec(angka){
+    var satuan = ['satu','dua','tiga','empat','lima','enam','tujuh','delapan','sembilan'];
+    var str = angka.toString();
+    var res = '';
+    var num = 1;
+    if(str.length === 1){
+      if(angka!== 0){
+        res += satuan[str[0]-1];
+      }
+      num = angka;
+    }
+    else if(str.length === 2){
+      res += satuan[str[0]-1] + ' puluh ';
+      num = parseInt(str[0]) *10;
+    }
+    else if(str.length === 3){
+      res += satuan[str[0]-1] + 'ratus ';
+      num = parseInt(str[0]) *100;
+    }else if (str.length === 4) {
+      res += satuan[str[0]-1] + 'ribu '
+      num = parseInt(str[0] * 1000)
+    }
+    else if (str.length === 5) {
+      res += satuan[str[0]-1] + ' puluhribu '
+      num = parseInt(str[0] * 10000)
+    }
+
+    if(angka > 0) {
+      return (res + rec(angka - num));
+    }else{
+      return res;
+    }
+
+
+
+}
 
 // Driver code
-console.log(in_words(123));
-// console.log(rec(90201));
+// console.log(in_words(123));
+console.log(rec(90201));
