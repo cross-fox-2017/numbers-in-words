@@ -64,18 +64,30 @@ function rec(angka){
     }
     else if(str.length === 2){
       res += satuan[str[0]-1] + ' puluh ';
-      num = parseInt(str[0]) *10;
+      num = parseInt(str[0]) * 10;
     }
     else if(str.length === 3){
-      res += satuan[str[0]-1] + 'ratus ';
-      num = parseInt(str[0]) *100;
+      res += satuan[str[0]-1] + ' ratus ';
+      num = parseInt(str[0]) * 100;
     }else if (str.length === 4) {
-      res += satuan[str[0]-1] + 'ribu '
+      res += satuan[str[0]-1] + ' ribu '
       num = parseInt(str[0] * 1000)
     }
     else if (str.length === 5) {
       res += satuan[str[0]-1] + ' puluhribu '
       num = parseInt(str[0] * 10000)
+    }else if (str.length === 6) {
+      res += satuan[str[0]-1] + ' ratusribu '
+      num = parseInt(str[0] * 100000)
+    }else if (str.length === 7) {
+      res += satuan[str[0]-1] + ' juta '
+      num = parseInt(str[0] * 1000000)
+    }else if (str.length === 8) {
+      res += satuan[str[0]-1] + ' puluh juta '
+      num = parseInt(str[0] * 10000000)
+    }else if (str.length === 9) {
+      res += satuan[str[0]-1] + ' ratus juta '
+      num = parseInt(str[0] * 100000000)
     }
 
     if(angka > 0) {
@@ -90,4 +102,4 @@ function rec(angka){
 
 // Driver code
 // console.log(in_words(123));
-console.log(rec(90201));
+console.log(rec(100000000));
