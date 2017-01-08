@@ -4,17 +4,11 @@
 // console.log(in_words(3111));
 // console.log(in_words(38079));
 // console.log(in_words(138227));
-// console.log(in_words(1000000));
-// console.log(in_words(10000000));
-// console.log(in_words(82102713));
-// console.log(in_words(123123123123));
-// console.log(in_words(123123123123123));
 
-function in_words(angka, result = [], result2 = []) {
+function in_words(angka, result = []) {
   // Your code here
   let tampung = angka.toString();
   let strings = tampung.split("");
-  let satuan = ["RIBU", "JUTA", "MILIAR", "TRILIUN"];
 
   if (strings[0] == "0") {
     if (strings.length > 1) {
@@ -147,35 +141,112 @@ function in_words(angka, result = [], result2 = []) {
     }
   }
 
-  if (strings.length == 2) {
+  if (strings.length == 2 || strings.length == 5 || strings.length == 8 || strings.length == 11 || strings.length == 14) {
     result.push("PULUH");
-    strings.splice(0,1);
-    let tam = strings.join("");
-    return in_words(tam, result);
-  }
-  if (strings.length == 3) {
-    result.push("RATUS");
-    strings.splice(0,1);
-    let tam = strings.join("");
-    return in_words(tam, result);
-  }
-  for (let i = 4, j = 0; i <= strings.length, j < 3; i+=3, j++) {
-    if (strings.length = i) {
-      let index = j+1; // 1,2,3,4,5,6,dst
-      let belakang = tampung.substr(index, i-j);
-      // console.log(strings.length);
-      // console.log(i);
-      // console.log(tampung);
-      // console.log(strings);
-      // console.log(strings.length);
-      console.log(belakang);
-      result.push(satuan[j]);
-      in_words(belakang, result);
-      // strings.splice(0,1);
-      return result.join(" ");
+    if (angka == 10000000) {
+      result.push("JUTA");
     }
+    if (angka == 10000000000) {
+      result.push("MILIAR");
+    }
+    if (angka == 10000000000000) {
+      result.push("TRILIUN");
+    }
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
+  }
+  if (strings.length == 3 || strings.length == 6 || strings.length == 9 || strings.length == 12 || strings.length == 15) {
+    result.push("RATUS");
+    if (angka == 100000000) {
+      result.push("JUTA");
+    }
+    if (angka == 100000000000) {
+      result.push("MILIAR");
+    }
+    if (angka == 100000000000000) {
+      result.push("TRILIUN");
+    }
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
   }
 
+  if (strings.length == 4) {
+    result.push("RIBU");
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
+  }
+
+  if (strings.length == 5) {
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
+  }
+
+  if (strings.length == 6) {
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
+  }
+
+  if (strings.length == 7) {
+    result.push("JUTA");
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
+  }
+
+  if (strings.length == 8) {
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
+  }
+
+  if (strings.length == 9) {
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
+  }
+
+  if (strings.length == 10) {
+    result.push("MILIAR");
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
+  }
+
+  if (strings.length == 11) {
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
+  }
+
+  if (strings.length == 12) {
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
+  }
+
+  if (strings.length == 13) {
+    result.push("TRILIUN");
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
+  }
+
+  if (strings.length == 14) {
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
+  }
+
+  if (strings.length == 15) {
+    strings.splice(0,1);
+    let tam = strings.join("");
+    return in_words(tam, result);
+  }
 }
 
 // Driver code
@@ -189,5 +260,5 @@ console.log(in_words(138227));
 console.log(in_words(1000000));
 console.log(in_words(10000000));
 console.log(in_words(82102713));
-// console.log(in_words(123123123123));
-// console.log(in_words(123123123123123));
+console.log(in_words(123123123123));
+console.log(in_words(123123123123123));
