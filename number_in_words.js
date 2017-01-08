@@ -1,8 +1,10 @@
 function in_words(angka, result = '') {
 	let arr = angka.toString().split('');
   // arr = [1,0]
-  let word = ['',' satu ', ' dua ', ' tiga ', ' empat ', ' lima ', ' enam ', ' tujuh ', ' delapan ', ' sembilan ', 
-  ' sepuluh ', ' sebelas ', ' dua belas ',' tiga belas ',' empat belas ',' lima belas ',' enam belas ',' tujuh belas ',' delapan belas ',' sembilan belas '];
+  let word = ['',' satu ', ' dua ', ' tiga ', ' empat ', ' lima ', ' enam ', ' tujuh ', ' delapan ', ' sembilan '];
+  let revisi = ['satu puluh','satu puluh satu', 'satu puluh dua','satu puluh tiga','satu puluh empat','satu puluh lima',
+  'satu puluh enam','satu puluh tujuh','satu puluh delapan','satu puluh sembilan','satu ratus','satu ribu'];
+  let change = ['sepuluh','sebelas','dua belas','tiga belas','empat belas','lima belas','enam belas','tujuh belas','delapan belas','sembilan belas','seratus','seribu']
   let add = ['ribu','juta','milyar','triliun'];
 
   for(let i = 3; i <= 15; i+=3){
@@ -31,24 +33,28 @@ function in_words(angka, result = '') {
 			return in_words(x, result)
 	  }
   }
-  
+
   if(arr.length === 1){
-    return result += word[angka];
+    result += word[angka];
   }
+
+  // replace unique number
+  for(let i = 11; i >= 0; i--){
+  	result = result.replace(revisi[i], change[i]);
+  }
+
+  return result
 }
 
 // Driver code
 console.log(in_words(1));
+console.log(in_words(10));
+console.log(in_words(18));
 console.log(in_words(86));
-console.log(in_words(277));
-console.log(in_words(9879));
-console.log(in_words(68214));
-console.log(in_words(451542));
-console.log(in_words(1646121));
-console.log(in_words(51984121));
-console.log(in_words(564561251));
-console.log(in_words(2973482393));
+console.log(in_words(219));
+console.log(in_words(1211));
+console.log(in_words(68212));
+console.log(in_words(1646118));
 console.log(in_words(21564561454));
-console.log(in_words(991231710947));
-console.log(in_words(914239718947817));
+console.log(in_words(911239718947817));
 
