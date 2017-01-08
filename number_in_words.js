@@ -1,9 +1,4 @@
-// console.log(in_words(4));
-// console.log(in_words(12));
-// console.log(in_words(120));
-// console.log(in_words(3111));
-// console.log(in_words(38079));
-// console.log(in_words(138227));
+// Menggunakan Recursive
 
 function in_words(angka, result = []) {
   // Your code here
