@@ -1,59 +1,90 @@
 
-function in_words(angka) {
-  var num = angka.toString().split('');
-  var terbilang = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan'];
-  var imbuhan = ['', 'ribu', 'juta', 'milyar', 'Triliun',];
+function in_words(angkaInput) {
 
-  var i = 0;
-  var j = 0;
+terbilang   = String(angkaInput);
+ var angkaTemp   = new Array('0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0');
+ var angkaKata    = new Array('','satu','dua','tiga','empat','lima','enam','tujuh','delapan','sembilan');
+ var tingkatan = new Array('','ribu','juta','milyar','triliun');
 
-   var allKata = '';
-   var kataBagian = '';
-   var kataI = "";
-   var kataII = "";
-   var kataIII = "";
+ i = 1;
+ j = 0;
+ allKata= "";
 
-   var numLength = num.length;
+ for (x = 0; x <= terbilang.length; x++) {
+   angkaTemp[x] = terbilang.substr(-(x),1);
+ }
 
-  while (i < numLength) {
+ while (i <= terbilang.length) {
 
-    // ratusan
-      if (num[i] === '1') {
-        kataI = "seratus";
-      }
-      else {
-        kataI = terbilang[num[i]] + " ratus";
-      }
+   subKata = "";
+   kataI = "";
+   kataII = "";
+   kataIII = "";
 
-    // puluhan
-      if (num[i+1] === '1'){
-        /* sepuluh */
-        if (num[i+2] === '0'){
-          kataII = 'sepuluh';
-        }
-        /* sebelas */
-        else if (num[i+2] === '1'){
-          kataII = 'sebelas';
-        }
-        /* belasan */
-        else {
-        kataII = terbilang[num[i+2]] + ' belas';
-        }
-      /* 20 - 90 */
-      }
-      else {
-        kataII = terbilang[num[i+1]] + ' puluh';
-      }
+   // ratusan
+   if (angkaTemp[i+2] != "0") {
+     if (angkaTemp[i+2] == "1") {
+       kataI = "seratus";
+     } else {
+       kataI = angkaKata[angkaTemp[i+2]] + " ratus";
+     }
+   }
 
-    // satuan
-       if (num[i+1] !== 1) { // belasan sudah masuk di puluhan
-         kataIII = terbilang[num[i+2]];
+   // puluhan
+   if (angkaTemp[i+1] != "0") {
+     if (angkaTemp[i+1] == "1") {
+       if (angkaTemp[i] == "0") {
+         kataII = "sepuluh";
+       } else if (angkaTemp[i] == "1") {
+         kataII = "sebelas";
+       } else {
+         kataII = angkaKata[angkaTemp[i]] + " belas";
        }
-    }
-  allKata = kataI + ' ' + kataII + ' ' + kataIII;
-  return allKata;
+     } else {
+       kataII = angkaKata[angkaTemp[i+1]] + " puluh";
+     }
+   }
+
+   // satuan
+   if (angkaTemp[i] != "0") {
+     if (angkaTemp[i+1] != "1") {
+       kataIII = angkaKata[angkaTemp[i]];
+     }
+   }
+
+    // perulangan ribuan jutaan dll
+   if ((angkaTemp[i] != "0") || (angkaTemp[i+1] != "0") || (angkaTemp[i+2] != "0")) {
+     subKata = kataI+" "+kataII+" "+kataIII+" "+tingkatan[j]+" ";
+   }
+
+   allKata = subKata + allKata;
+   i = i + 3;
+   j = j + 1;
+
+ }
+
+ // replace seribu to seribu
+ if ((angkaTemp[5] == "0") && (angkaTemp[6] == "0")) {
+   allKata = allKata.replace("Satu Ribu","Seribu");
+ }
+
+ return allKata
+
 }
 
 
-console.log(in_words(439));
-console.log(in_words(999));
+// Driver code
+
+console.log(in_words(1));
+console.log(in_words(12));
+console.log(in_words(312));
+console.log(in_words(2345));
+console.log(in_words(76803));
+console.log(in_words(538476));
+console.log(in_words(2736094));
+console.log(in_words(27360732));
+console.log(in_words(297348239));
+console.log(in_words(2973482393));
+console.log(in_words(29734823912));
+console.log(in_words(297348239341));
+console.log(in_words(2973482393412));
