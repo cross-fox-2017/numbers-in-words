@@ -76,14 +76,14 @@ switch (digit[0]) {
 
         // 1.000.000 juta
         if ( digit.length == 7 ) {
-          angka = angka - (digit[0] * 100000);
+          angka = angka - (digit[0] * 1000000);
           tampung += "juta ";
         }
 
         // 10.000.000 puluh juta
         if ( digit.length == 8 ) {
           console.log('-- angka 8')
-          angka = angka - (digit[0] * 100000);
+          angka = angka - (digit[0] * 10000000);
           tampung += "puluh juta ";
         }
 
@@ -139,4 +139,4 @@ switch (digit[0]) {
 
 
 // Driver code
-console.log(in_words(150000000));
+console.log(in_words(14000000));
